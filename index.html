@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>カテゴリ選択 - 一問一答クイズ</title>
+  <script src="data.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2em;
+    }
+    h1 {
+      margin-bottom: 1em;
+    }
+    .category-button {
+      display: block;
+      margin: 0.5em 0;
+      padding: 1em;
+      font-size: 1.2em;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>カテゴリを選んでください</h1>
+  <div id="category-list"></div>
+
+  <script>
+    const categoryList = document.getElementById("category-list");
+
+    for (const category in quizData) {
+      const btn = document.createElement("button");
+      btn.textContent = category;
+      btn.className = "category-button";
+      btn.onclick = () => {
+        // クエリパラメータにカテゴリ名をつけてquiz.htmlに遷移
+        window.location.href = `quiz.html?category=${encodeURIComponent(category)}`;
+      };
+      categoryList.appendChild(btn);
+    }
+  </script>
+</body>
+</html>

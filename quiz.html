@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>一問一答クイズ</title>
+  <script src="data.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2em;
+    }
+    h1 {
+      margin-bottom: 1em;
+    }
+    .question {
+      margin-bottom: 1.5em;
+      padding: 1em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #f9f9f9;
+    }
+    .question-number {
+      font-weight: bold;
+    }
+    .answer {
+      margin-top: 0.5em;
+      color: green;
+      display: none;
+    }
+    button {
+      margin-top: 0.5em;
+    }
+    .back-button {
+      margin-top: 2em;
+      font-size: 1em;
+      padding: 0.5em 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="category-title"></h1>
+  <div id="question-list"></div>
+
+  <!-- 戻るボタン -->
+  <div>
+    <button class="back-button" onclick="location.href='index.html'">トップに戻る</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category");
+    const data = quizData[category];
+
+    document.getElementById("category-title").textContent = category;
+
+    const questionList = document.getElementById("question-list");
+
+    data.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+
+      const qNum = document.createElement("div");
+      qNum.className = "question-number";
+      qNum.textContent = `${item.question_number}: ${item.question}`;
+      div.appendChild(qNum);
+
+      const button = document.createElement("button");
+      button.textContent = "正解を表示";
+      div.appendChild(button);
+
+      const answer = document.createElement("div");
+      answer.className = "answer";
+      answer.textContent = `正解：${item.answer}`;
+      div.appendChild(answer);
+
+      button.addEventListener("click", () => {
+        const isVisible = answer.style.display === "block";
+        answer.style.display = isVisible ? "none" : "block";
+        button.textContent = isVisible ? "正解を表示" : "正解を隠す";
+      });
+
+      questionList.appendChild(div);
+    });
+  </script>
+</body>
+</html>
