@@ -4,38 +4,57 @@
   <meta charset="UTF-8">
   <title>一問一答クイズ</title>
   <script src="data.js"></script>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 2em;
-    }
-    h1 {
-      margin-bottom: 1em;
-    }
-    .question {
-      margin-bottom: 1.5em;
-      padding: 1em;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background: #f9f9f9;
-    }
-    .question-number {
-      font-weight: bold;
-    }
-    .answer {
-      margin-top: 0.5em;
-      color: green;
-      display: none;
-    }
-    button {
-      margin-top: 0.5em;
-    }
-    .back-button {
-      margin-top: 2em;
-      font-size: 1em;
-      padding: 0.5em 1em;
-    }
-  </style>
+<style>
+  body {
+    font-family: sans-serif;
+    padding: 2em;
+    max-width: 800px;
+    margin: auto;
+  }
+
+  h1 {
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  .question {
+    margin-bottom: 1.5em;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9;
+  }
+
+  .question-number {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
+  }
+
+  .answer {
+    margin-top: 0.5em;
+    color: green;
+    display: none;
+    font-size: 1.1em;
+  }
+
+  button {
+    font-size: 1.2em;
+    padding: 0.8em 1em;
+    width: 100%;
+    max-width: 600px;
+    margin: 0.5em auto;
+    display: block;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .back-button {
+    margin-top: 2em;
+    background-color: #e0e0e0;
+  }
+</style>
 </head>
 <body>
   <h1 id="category-title"></h1>
