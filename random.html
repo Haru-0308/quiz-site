@@ -70,7 +70,8 @@
     <button class="back-button" onclick="location.href='index.html'">トップに戻る</button>
   </div>
 
-  <script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
     // 全カテゴリから全問題をまとめて取得
     let allQuestions = [];
     for (const category in quizData) {
@@ -112,6 +113,8 @@
     };
 
     container.appendChild(div);
-  </script>
+  });
+</script>
+
 </body>
 </html>
