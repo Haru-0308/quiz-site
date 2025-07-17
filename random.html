@@ -70,51 +70,49 @@
     <button class="back-button" onclick="location.href='index.html'">トップに戻る</button>
   </div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // 全カテゴリから全問題をまとめて取得
-    let allQuestions = [];
-    for (const category in quizData) {
-      allQuestions = allQuestions.concat(quizData[category]);
-    }
-
-    // ランダムに1問選ぶ
-    const randomIndex = Math.floor(Math.random() * allQuestions.length);
-    const q = allQuestions[randomIndex];
-
-    const container = document.getElementById("question-container");
-
-    const div = document.createElement("div");
-    div.className = "question";
-
-    const qText = document.createElement("div");
-    qText.className = "question-number";
-    qText.textContent = `${q.question_number}: ${q.question}`;
-    div.appendChild(qText);
-
-    const showButton = document.createElement("button");
-    showButton.textContent = "正解を表示";
-    showButton.className = "show-button";
-    div.appendChild(showButton);
-
-    const answer = document.createElement("div");
-    answer.className = "answer";
-    answer.textContent = `正解：${q.answer}`;
-    div.appendChild(answer);
-
-    showButton.onclick = () => {
-      if (answer.style.display === "none") {
-        answer.style.display = "block";
-        showButton.textContent = "正解を隠す";
-      } else {
-        answer.style.display = "none";
-        showButton.textContent = "正解を表示";
+  <script>
+    window.addEventListener("load", function () {
+      // 全カテゴリから全問題をまとめて取得
+      let allQuestions = [];
+      for (const category in quizData) {
+        allQuestions = allQuestions.concat(quizData[category]);
       }
-    };
 
-    container.appendChild(div);
-  });
-</script>
+      // ランダムに1問選ぶ
+      const randomIndex = Math.floor(Math.random() * allQuestions.length);
+      const q = allQuestions[randomIndex];
 
+      const container = document.getElementById("question-container");
+
+      const div = document.createElement("div");
+      div.className = "question";
+
+      const qText = document.createElement("div");
+      qText.className = "question-number";
+      qText.textContent = `${q.question_number}: ${q.question}`;
+      div.appendChild(qText);
+
+      const answer = document.createElement("div");
+      answer.className = "answer";
+      answer.textContent = `正解：${q.answer}`;
+      div.appendChild(answer);
+
+      const showButton = document.createElement("button");
+      showButton.textContent = "正解を表示";
+      showButton.className = "show-button";
+      showButton.addEventListener("click", () => {
+        if (answer.style.display === "none") {
+          answer.style.display = "block";
+          showButton.textContent = "正解を隠す";
+        } else {
+          answer.style.display = "none";
+          showButton.textContent = "正解を表示";
+        }
+      });
+      div.appendChild(showButton);
+
+      container.appendChild(div);
+    });
+  </script>
 </body>
 </html>
