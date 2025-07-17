@@ -92,29 +92,30 @@
     data.forEach((item, index) => {
       const div = document.createElement("div");
       div.className = "question";
-
+    
       const qNum = document.createElement("div");
       qNum.className = "question-number";
       qNum.textContent = `${item.question_number}: ${item.question}`;
       div.appendChild(qNum);
-
-      const button = document.createElement("button");
-      button.textContent = "正解を表示";
-      div.appendChild(button);
-
+    
       const answer = document.createElement("div");
       answer.className = "answer";
       answer.textContent = `正解：${item.answer}`;
+      answer.style.display = "none";  // 初期非表示
       div.appendChild(answer);
-
-      button.addEventListener("click", () => {
-        const isVisible = answer.style.display === "block";
-        answer.style.display = isVisible ? "none" : "block";
-        button.textContent = isVisible ? "正解を表示" : "正解を隠す";
-      });
-
+    
+      const button = document.createElement("button");
+      button.textContent = "正解を表示";
+      button.onclick = () => {
+        const visible = answer.style.display === "block";
+        answer.style.display = visible ? "none" : "block";
+        button.textContent = visible ? "正解を表示" : "正解を隠す";
+      };
+      div.appendChild(button);
+    
       questionList.appendChild(div);
     });
+
   </script>
 </body>
 </html>
