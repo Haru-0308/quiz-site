@@ -418,7 +418,7 @@ const quizData = {
   "基礎確認：集合と論理": [
     {
       question_number: "Q1",
-      question: "条件Aが任意のxについて成立するとき「x ★ A」と表記する。",
+      question: "条件Aが任意のxについて成立するとき「★x, A」と表記する。",
       answer: "∀"
     },
     {
