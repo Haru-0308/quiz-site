@@ -39,6 +39,25 @@
   .category-button:hover {
     background-color: #e0e0e0;
   }
+
+  .random-button {
+  font-size: 1.2em;
+  padding: 0.8em 1.2em;
+  width: 100%;
+  max-width: 600px;
+  text-align: left;
+  margin: 3em 0 1em 0; /* 上に大きめの余白を確保（3em） */
+  display: block;
+  background-color: #dfefff;
+  border: 1px solid #88aacc;
+  cursor: pointer;
+  border-radius: 8px;
+}
+  
+.random-button:hover {
+  background-color: #cfe0f5;
+}
+  
 </style>
 </head>
 <body>
@@ -59,8 +78,8 @@
   }
 
   const randomBtn = document.createElement("button");
-  randomBtn.textContent = "ランダム編（全問題から1問）";
-  randomBtn.className = "category-button";
+  randomBtn.textContent = "ランダム編（全問題から1問ずつ）";
+  randomBtn.className = "random-button";
   randomBtn.onclick = () => {
     window.location.href = "random.html";
   };
