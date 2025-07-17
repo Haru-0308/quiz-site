@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ランダム出題 - 一問一答クイズ</title>
+  <script src="data.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      font-size: 1.1em;
+      line-height: 1.6;
+      padding: 1.2em;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 1.5em;
+      margin-bottom: 1em;
+      color: #333;
+    }
+
+    .question {
+      padding: 1em;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f9f9f9;
+      margin-bottom: 1.5em;
+    }
+
+    .question-number {
+      font-weight: bold;
+      font-size: 1.25em;
+    }
+
+    .answer {
+      margin-top: 0.8em;
+      color: green;
+      display: none;
+      font-size: 1.2em;
+    }
+
+    button {
+      font-size: 1.2em;
+      padding: 0.8em 1.2em;
+      margin: 0.6em 0.6em 0.6em 0;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .show-button {
+      background-color: #e0e0e0;
+    }
+
+    .next-button {
+      background-color: #cce5ff;
+    }
+
+    .back-button {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>ランダム出題</h1>
+  <div id="question-container"></div>
+  <div>
+    <button class="next-button" onclick="location.reload()">次の問題へ</button>
+    <button class="back-button" onclick="location.href='index.html'">トップに戻る</button>
+  </div>
+
+  <script>
+    // 全カテゴリから全問題をまとめて取得
+    let allQuestions = [];
+    for (const category in quizData) {
+      allQuestions = allQuestions.concat(quizData[category]);
+    }
+
+    // ランダムに1問選ぶ
+    const randomIndex = Math.floor(Math.random() * allQuestions.length);
+    const q = allQuestions[randomIndex];
+
+    const container = document.getElementById("question-container");
+
+    const div = document.createElement("div");
+    div.className = "question";
+
+    const qText = document.createElement("div");
+    qText.className = "question-number";
+    qText.textContent = `${q.question_number}: ${q.question}`;
+    div.appendChild(qText);
+
+    const showButton = document.createElement("button");
+    showButton.textContent = "正解を表示";
+    showButton.className = "show-button";
+    div.appendChild(showButton);
+
+    const answer = document.createElement("div");
+    answer.className = "answer";
+    answer.textContent = `正解：${q.answer}`;
+    div.appendChild(answer);
+
+    showButton.onclick = () => {
+      if (answer.style.display === "none") {
+        answer.style.display = "block";
+        showButton.textContent = "正解を隠す";
+      } else {
+        answer.style.display = "none";
+        showButton.textContent = "正解を表示";
+      }
+    };
+
+    container.appendChild(div);
+  </script>
+</body>
+</html>
