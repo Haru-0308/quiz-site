@@ -45,19 +45,26 @@
   <h1>カテゴリを選んでください</h1>
   <div id="category-list"></div>
 
-  <script>
-    const categoryList = document.getElementById("category-list");
+<script>
+  const categoryList = document.getElementById("category-list");
 
-    for (const category in quizData) {
-      const btn = document.createElement("button");
-      btn.textContent = category;
-      btn.className = "category-button";
-      btn.onclick = () => {
-        // クエリパラメータにカテゴリ名をつけてquiz.htmlに遷移
-        window.location.href = `quiz.html?category=${encodeURIComponent(category)}`;
-      };
-      categoryList.appendChild(btn);
-    }
-  </script>
+  for (const category in quizData) {
+    const btn = document.createElement("button");
+    btn.textContent = category;
+    btn.className = "category-button";
+    btn.onclick = () => {
+      window.location.href = `quiz.html?category=${encodeURIComponent(category)}`;
+    };
+    categoryList.appendChild(btn);
+  }
+
+  const randomBtn = document.createElement("button");
+  randomBtn.textContent = "ランダム編（全問題から1問）";
+  randomBtn.className = "category-button";
+  randomBtn.onclick = () => {
+    window.location.href = "random.html";
+  };
+  categoryList.appendChild(randomBtn);
+</script>
 </body>
 </html>
